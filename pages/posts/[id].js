@@ -6,21 +6,16 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 export async function getStaticPaths() {
     const data = await fetch('https://jsonplaceholder.typicode.com/posts');
     const posts = await data.json();
-    console.log({ posts });
+    console.log(1111, { data });
+
     const Result = posts.map(post => ({ params: { id: post.id.toString() } }))
-
-    // const paths = posts.map(post =>({
-    //     params: {id: post.show.id},
-    // }))
-
-    console.log({ Result });
+    console.log(222, { posts });
     return {
         paths: Result,
         fallback: 'blocking'
     }
 }
 export async function getStaticProps({ params }) {
-    console.log({ params });
     const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
     const post = await data.json();
 
@@ -45,13 +40,3 @@ export default function Post({ post }) {
         </Layout>
     );
 }
-
-// export async function getStaticPaths() {
-//     const idList = getproducts().map(product => product.id)
-//     const params = idList.map(id => ({ params: { productId: id } }))
-
-//     return {
-//         fallback: false,
-//         paths: params,
-//     };
-// }
