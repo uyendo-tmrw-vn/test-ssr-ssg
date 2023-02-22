@@ -5,7 +5,7 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link';
 
 export default function Home({ allPostsData }) {
-  console.log({ allPostsData });
+  // console.log({ allPostsData });
   return (
     <Layout home>
       <Head>

@@ -8,8 +8,10 @@ module.exports = {
      exportPathMap: function () {
         return {
             '/': { page: `/` },
+            // '/posts/1': { page: 'posts/[id]' }
         }
     },
+    runtime: 'nodejs',
     images:{
         unoptimized : true
     }
