@@ -1,30 +1,53 @@
+import Head from 'next/head';
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 
 export default function Post({ post }) {
-  // console.log({post});
-    return (
-        <Layout>
-            ID: {post?.id}
-            <br />
-            Name: {post?.name}
-            <br/>
-            Slug: {post?.slug}
-        </Layout>
-    );
+  console.log({ post });
+  return (
+    <>
+      <Head>
+        <title>UyenDo|{post?.name}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:url" content={'url'} />
+        <meta name="keywords" content='test' />
+        <meta property="og:type" content="website" />
+
+        <meta name="description" content={post.meta_description ? post.meta_description : post?.description} />
+        <meta property="og:image" content={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id} />
+        <meta property="og:title" content={post.meta_title ? post.meta_title : post?.name} />
+        <meta property="og:description" content={post.meta_description ? post.meta_description : post?.description} />
+        <meta
+          name="robots"
+          content={
+            process.env.NODE_ENV === "production"
+              ? "index, follow"
+              : "noindex, nofollow"
+          } />
+      </Head>
+      <Layout>
+        ID: {post?.id}
+        <br />
+        Name: {post?.name}
+        <br />
+        Slug: {post?.slug}
+      </Layout>
+    </>
+
+  );
 }
 
-export const getServerSideProps =async (ctx)=>{
-  const {params} = ctx;
+export const getServerSideProps = async (ctx) => {
+  const { params } = ctx;
   const res = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.id}`)
   const post1 = await res.json()
   const post = await post1.data
 
-  return{
-      props:{
-        post,
-      }
+  return {
+    props: {
+      post,
+    }
   }
 }
 
