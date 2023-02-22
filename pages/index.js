@@ -1,40 +1,72 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link';
+import PlanktonView from '@components/PlanktonView';
+import AppContext from '@components/AppContext';
+import Layout from '@components/Layout';
+import { useContext, useEffect, useState } from 'react';
+import { Loading } from '@components/Loading';
+import { useRouter } from 'next/router';
+import MetaTag from '@components/MetaTag';
+import { baseURL, CallApiConfig, ImageUrl } from '@components/Common';
+import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 
-export default function Home({ allPostsData }) {
-  console.log({ allPostsData });
+const Home = ({ props, configResponse }) => {
+  const { listProject, resConfigData } = useContext(AppContext)
+
+  const [eleLoading, setEleLoading] = useState(true)
+  const [eleHand, setEleHand] = useState(false)
+
+  const router = useRouter();
+  useEffect(() => {
+    document.querySelector('.loading').style.visibility = 'visible';
+    document.querySelector('.loading').style.opacity = '1';
+    document.querySelector('.loading').style.zIndex = '1000';
+  }, [router]);
+
+  useEffect(() => {
+    if (eleHand === true) {
+      // document.querySelector('.top-works-gallery-title.title-1').classList.add('active');
+    }
+  }, [eleHand]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEleHand(true)
+    }, 2000);
+
+    function handleClick(event) {
+      setEleHand(false);
+    }
+
+    // window.addEventListener("wheel", Test);
+    window.addEventListener("mousewheel", handleClick);
+    window.addEventListener("touchmove", handleClick);
+    window.addEventListener("click", handleClick);
+    // clean up
+    return () => {
+      window.removeEventListener("mousewheel", handleClick);
+      window.removeEventListener("touchmove", handleClick);
+      // window.removeEventListener("wheel", Test);
+    }
+
+  }, [])
+
+
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-     
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.data.map(({ slug, date, title },index) => (
-            <li className={utilStyles.listItem} key={slug}>
-              <Link href={'posts/' + slug}>{index+1} - {slug}</Link> {title} <br />
-              {date}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+    <>
+      <Layout>
+        <PlanktonView eleHand={eleHand} listProject={listProject} />
+        {
+          eleHand &&
+          <div className='eleHand '>
+            <span className='eleHandSpan'>
+              <img alt="swipe to start" src='/images/arrow-swipe.png' className='' />
+            </span>
+            {/* <img src='/images/hand.gif' className='w-full max-w-[10rem]' /> */}
+          </div>
+        }
+        <Loading />
+      </Layout>
+    </>
   )
 }
 
-export async function getStaticProps() {
-  const url = 'https://cms.ipossible.com.sg/items/projects?filter[status][_eq]=published&fields=id,name,slug,description,location,hide_all_work,main_photo.id,photos.*,main_photo.type,client.id,client.name&sort=+sort';
-  const res = await fetch(url);
-  const allPostsData = await res.json();
-console.log({allPostsData});
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+export default Home

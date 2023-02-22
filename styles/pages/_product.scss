@@ -1,0 +1,8 @@
+.product-detail-page {
+    .swiper-slide {
+        @apply cursor-pointer;
+    }
+    .link-all-works {
+        @apply flex justify-center mt-[3.5rem] #{!important};
+    }
+}

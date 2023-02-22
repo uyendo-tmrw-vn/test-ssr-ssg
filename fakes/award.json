@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "image": "/images/about/about-1.jpg",
+        "title": "Marketing Magazine’s, Agency of the Year Awards 2020",
+        "name": "Finalist",
+        "link": "#"
+    },
+    {
+        "id": 2,
+        "image": "/images/about/about-2.jpg",
+        "title": "Marketing Magazine’s, MARKies Awards 2019",
+        "name": "Silver",
+        "link": "#"
+    },
+    {
+        "id": 3,
+        "image": "/images/about/about-3.jpg",
+        "title": "Marketing Magazine’s, Marketing Excellence Awards 2018",
+        "name": "Gold",
+        "link": "#"
+    },
+    {
+        "id": 4,
+        "image": "/images/about/about-4.jpg",
+        "title": "Mumbrella Asia Awards",
+        "name": "Winner",
+        "link": "#"
+    }
+]

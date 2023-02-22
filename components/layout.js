@@ -1,70 +1,44 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import { motion } from "framer-motion";
 
-const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
+const Layout = ({ children }) => {
 
-export default function Layout({ children, home }) {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            {/* <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            /> */}
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            {/* <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt={name}
-              />
-            </Link> */}
-            {/* <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2> */}
-          </>
-        )}
-      </header>
-      {!home && (
-        <div className={`${styles.backToHome} text-right pb-5`}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
-      <main>{children}</main>
-      
-    </div>
-  )
+    const variants = {
+        hidden: { opacity: 0, x: -200, y: 0 },
+        enter: { opacity: 1, x: 0, y: 0 },
+        exit: {},
+    }
+
+    return (
+        <motion.div
+            // initial={{ x: 300, opacity: 0 }}
+            // animate={{ x: 0, opacity: 1 }}
+            // exit={{ x: 300, opacity: 0 }}
+            // transition={{
+            //     type: "spring",
+            //     stiffness: 260,
+            //     damping: 20,
+            // }}
+            // initial={{ opacity: 0, x: -200, y: 0 }}
+            // animate={{ opacity: 1, x: 0, y: 0 }}
+            // exit={{ opacity: 0, x: 0, y: -100 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+            }}
+
+        // variants={variants} // Pass the variant object into Framer Motion 
+        // initial="hidden" // Set the initial state to variants.hidden
+        // animate="enter" // Animated state to variants.enter
+        // exit="exit" // Exit state (used later) to variants.exit
+        // transition={{ type: 'linear' }} // Set the transition to linear
+        >
+            {children}
+        </motion.div>
+    )
 }
+export default Layout;
+

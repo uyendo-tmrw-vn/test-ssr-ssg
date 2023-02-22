@@ -1,0 +1,55 @@
+.about-page {
+    &__container {
+        @apply mt-[2.5rem] md:mt-[4rem] relative overflow-hidden;
+    }
+    &__top {
+        @apply md:pb-[0] mb-[4rem] md:mb-[6rem] overflow-hidden relative;
+        // @apply py-[3rem] md:py-[13.5%] md:pb-[10%] px-[2rem] md:px-[14%] mb-[3rem] md:mb-[6rem] overflow-hidden relative;
+        // background-image: url("/images/about/about-bg.jpg");
+        background-size: 100%;
+        background-position: top center;
+        background-repeat: no-repeat;
+        @media (max-width: 767px) {
+            background-size: cover;
+        }
+    }
+    &__wrap-des {
+        @apply z-[2] container absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-full;
+    }
+    &__wrap-video {
+        @apply relative z-[1];
+    }
+    &__top-text {
+        @apply px-[1.5rem] md:px-0 absolute top-[50%] left-0 translate-y-[-50%] z-[1] text-[#fff] flex flex-col text-[4.7vw] sm:text-[5vw] md:text-[2.5vw] xl:text-[2.1rem];
+        * {
+            &:not(:last-child) {
+                @apply mb-[2rem] md:mb-[5rem] leading-[1.7] md:leading-[2];
+            }
+        }
+    }
+    &__awards {
+        .heading {
+            @apply mt-0;
+        }
+    }
+    &__awards-list {
+        @apply flex flex-wrap gap-x-[1.7%] gap-y-[30px] mt-[1.5rem] md:mt-[3.5rem];
+    }
+    &__awards-item {
+        @apply w-full sm:w-[49%] relative;
+    }
+    &__awards-name {
+        @apply text-[1.2rem] md:text-[1.44rem] mt-[0.8rem] md:mt-[1.8rem] md:mb-[0.5rem];
+    }
+    &__awards-type {
+        @apply text-ip-red text-[1.6rem] md:text-[2.1rem];
+    }
+    &__awards-img {
+        @apply mb-[1.4rem];
+    }
+    &__link {
+    }
+    .wrap-img {
+        @apply relative border-[#dddddd69] border-[1px];
+    }
+}

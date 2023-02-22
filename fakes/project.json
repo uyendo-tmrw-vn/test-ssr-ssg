@@ -1,0 +1,224 @@
+[
+    {
+        "id": 2,
+        "name": "LOUIS VUITTON EXOTIQUE GLOBAL PREMIER IN SINGAPORE",
+        "slug": "lv-1",
+        "description": "Louis Vuitton – Exotics Collection. A world premiere in Singapore. Interior Design by Baroness Rose Anne de Pampelonne. Scope of Work: Venue sourcing, spatial planning, layout, restoration of house, liaison with interior designer, fabrication and build of fittings, aircon and electrical fittings, landscaping and pest control, full on-site event management.\n",
+        "location": "Korea",
+        "main_photo": {
+            "id": "85ba7636-fbda-41e2-b1ce-b413566b0c11",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 3,
+        "name": "LOUIS VUITTON EXOTIQUE GLOBAL PREMIER IN SINGAPORE",
+        "slug": "lv-2",
+        "description": "A Cruise 20 Press Presentation and Cocktail Event for media professionals held in Singapore. Scope of Work: Design adaption from global guidelines, spatial planning, fabrication and build, furniture sourcing, guests & hospitality management.\n",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "5d6596ce-69e5-485b-9bee-cbf5a2193317",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Louis Vuitton",
+        "slug": "lv-3",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Bangkok",
+        "main_photo": {
+            "id": "db3515f2-d85e-4d7a-8da6-4315de9608cf",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Louis Vuitton",
+        "slug": "lv-4",
+        "description": "We’ve seen in this article just the basics of using the <Image> component, so for more advanced things or other use cases, please go to https://nextjs.org/docs/api-reference/next/image and find the answers there.",
+        "location": "US",
+        "main_photo": {
+            "id": "71ed2044-e4c1-4082-a470-5a8ee5021b6b",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Louis Vuittion",
+        "slug": "lv-5",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "High Watch Launch, Bangkok",
+        "main_photo": {
+            "id": "390f23dc-b97f-4bdc-951f-0540de13dbfa",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Louis Vuitton Video",
+        "slug": "",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "High Watch Launch, Singapore",
+        "main_photo": {
+            "id": "f653169c-6e2a-4b6b-8127-e67d85471558",
+            "type": "video/mp4"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Louis Vuitton",
+        "slug": "lv-7",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "28c19e4e-3cd1-4b4f-a51a-3f0c32e080dc",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Louis Vuitton",
+        "slug": "lv-7",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "High Watch Launch, Singapore",
+        "main_photo": {
+            "id": "c54cd639-73fb-481d-8084-db6e9b28617e",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Louis Vuitton",
+        "slug": "lv-8",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "33823991-21aa-42ce-8c93-64339ad16cdb",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 11,
+        "name": "Louis Vuitton",
+        "slug": "lv-9",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "e382730b-b723-476e-95a9-138ab271fa56",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 12,
+        "name": "Louis Vuitton",
+        "slug": "lv-10",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "abde1da0-e438-44ce-8e5d-00544f02aab5",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 13,
+        "name": "Louis Vuitton",
+        "slug": "lv-12",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "cfd0d4b0-bb52-4fe8-8b38-934516a89fc2",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 14,
+        "name": "Louis Vuitton Null Media",
+        "slug": "lv-13",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": null,
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 15,
+        "name": "Louis Vuitton",
+        "slug": "lv-14",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "d73964ef-52cf-45f7-af5e-6ca5a295f290",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    },
+    {
+        "id": 16,
+        "name": "Louis Vuitton",
+        "slug": "lv-15",
+        "description": "To launch Louis Vuitton’s line of prestigious watches, we designed an unforgettable night for horologists\n\nand watch aficionados.\n\nA timeless experience, befitting the finest timepieces.",
+        "location": "Singapore",
+        "main_photo": {
+            "id": "6dfc6a78-40d8-4814-a2c1-b2b22bb2b885",
+            "type": "image/jpeg"
+        },
+        "client": {
+            "id": 1,
+            "name": "LOUIS VUITTON"
+        }
+    }
+]

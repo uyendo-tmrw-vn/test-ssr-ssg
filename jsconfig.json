@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "target": "es6",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@redux/*": [
+        "redux/*"
+      ],
+      "@fakes/*": [
+        "fakes/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@api/*": [
+        "api/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+    }
+  }
+}
