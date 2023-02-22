@@ -3,24 +3,26 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 
 
 export default function Post({ post }) {
+  console.log({post});
     return (
         <Layout>
-            {post?.title}
+            ID: {post?.id}
             <br />
-            {post?.id}
-            <br />
-            {post?.date}
+            Name: {post?.name}
+            <br/>
+            Slug: {post?.slug}
         </Layout>
     );
 }
 
 export async function getStaticPaths() {
-  const data = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await fetch('https://cms.ipossible.com.sg/items/projects?filter[status][_eq]=published&fields=id,name,slug,description,location,hide_all_work,main_photo.id,photos.*,main_photo.type,client.id,client.name&sort=+sort');
   console.log(444, { data });
-  const posts = await data.json();
+  const posts1 = await data.json();
+  const posts = await posts1.data;
 
   //return array with {id:value}
-  const Result = posts.map(post => ({ params: { id: post.id.toString() } }))
+  const Result = posts.map(post => ({ params: { id: post.slug.toString() } }))
   console.log({ Result });
   return {
     paths: Result,
@@ -28,8 +30,9 @@ export async function getStaticPaths() {
   }
 }
 export async function getStaticProps({ params }) {
-  const data = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
-  const post = await data.json();
+  const data = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.id}`);
+  const post1 = await data.json();
+  const post = await post1.data;
 
   return {
     props: {
