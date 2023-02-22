@@ -10,7 +10,7 @@ import { ApiUrl } from "@api/apiUrl";
 
 import Heading from "@components/Heading";
 import api from "@api/axiosServices";
-import Layout from "@components/Layout";
+// import Layout from "@components/Layout";
 import AppContext from "@components/AppContext";
 import MetaTag from "@components/MetaTag";
 
@@ -70,7 +70,7 @@ const Contact = () => {
                 description={pageDes}
                 siteName={resConfigData?.site_name}
             />
-            <Layout>
+            {/* <Layout> */}
                 <div className="contact-page">
                     <Heading title="Contact Us" />
                     <div className="container">
@@ -181,7 +181,7 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-            </Layout>
+            {/* </Layout> */}
         </>
     )
 }

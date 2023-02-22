@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
 import MetaTag from '@components/MetaTag';
 import { baseURL, ImageUrl } from '@components/Common';
 import { ApiUrl } from '@api/apiUrl';
@@ -25,7 +25,7 @@ const Thanks = () => {
                 description={pageDes}
                 siteName={resConfigData?.site_name}
             />
-            <Layout>
+            {/* <Layout> */}
                 <div className="thank-you-page min-h-[60vh] flex items-center">
                     <div className='container'>
                         <div className="thank-you-wrap text-center md:text-left max-w-[90vw] md:max-w-[40vw] mx-auto">
@@ -46,7 +46,7 @@ const Thanks = () => {
                         </div>
                     </div>
                 </div>
-            </Layout>
+            {/* </Layout> */}
         </>
     );
 };

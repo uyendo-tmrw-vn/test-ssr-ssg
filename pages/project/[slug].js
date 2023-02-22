@@ -15,7 +15,7 @@ import { baseURL, ImageUrl, handleError, imgPlaceHolder, ImgQuality, CheckExist 
 import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
 
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
 import Heading from '@components/Heading';
 import Error from 'pages/_error';
 
@@ -100,7 +100,7 @@ const ProjectDetail = ({ post, title, meta_title, meta_description, work_photo }
         siteName={resConfigData?.site_name}
         imageSeo={work_photo}
       />
-      <Layout>
+      {/* <Layout> */}
         <div className='product-detail-page'>
           <Heading title={detail?.client?.name} sub={detail?.name + ', ' + detail?.location} />
           <div className='SwiperSliderNormal'>
@@ -188,7 +188,7 @@ const ProjectDetail = ({ post, title, meta_title, meta_description, work_photo }
             </div>
           </div>
         </div>
-      </Layout>
+      {/* </Layout> */}
     </>
   )
 }

@@ -9,7 +9,7 @@ import { Link } from 'next/link';
 import { ApiUrl } from '@api/apiUrl';
 import api from '/api/axiosServices';
 import Heading from "@components/Heading";
-import Layout from "@components/Layout";
+// import Layout from "@components/Layout";
 import ImagePlaceholder from "@components/ImagePlaceholder";
 import MetaTag from "@components/MetaTag";
 import AppContext from "@components/AppContext";
@@ -67,7 +67,7 @@ const About = ({ configResponse }) => {
                 description={resData?.about?.description && Parser(resData?.about?.description)}
                 siteName={resConfigData?.site_name}
             />
-            <Layout>
+            {/* <Layout> */}
                 <div className="about-page">
                     <Heading title={resData?.about?.title} />
                     <div className="about-page__container ">
@@ -138,7 +138,7 @@ const About = ({ configResponse }) => {
                         </div>
                     </div>
                 </div>
-            </Layout>
+            {/* </Layout> */}
         </>
     )
 }

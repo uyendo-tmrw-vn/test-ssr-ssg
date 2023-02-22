@@ -1,6 +1,6 @@
 import PlanktonView from '@components/PlanktonView';
 import AppContext from '@components/AppContext';
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
 import { useContext, useEffect, useState } from 'react';
 import { Loading } from '@components/Loading';
 import { useRouter } from 'next/router';
@@ -52,7 +52,7 @@ const Home = ({ props, configResponse }) => {
 
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
         <PlanktonView eleHand={eleHand} listProject={listProject} />
         {
           eleHand &&
@@ -64,7 +64,7 @@ const Home = ({ props, configResponse }) => {
           </div>
         }
         <Loading />
-      </Layout>
+      {/* </Layout> */}
     </>
   )
 }

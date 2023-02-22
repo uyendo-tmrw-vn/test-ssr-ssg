@@ -6,7 +6,7 @@ import { JsonWorks } from '@fakes/index';
 import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 
 import api from 'api/axiosServices';
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
 import Heading from '@components/Heading';
 import Link from 'next/link';
 import ImagePlaceholder from '@components/ImagePlaceholder';
@@ -65,7 +65,7 @@ const Works = () => {
                 description={pageDes}
                 siteName={resConfigData?.site_name}
             />
-            <Layout>
+            {/* <Layout> */}
                 <Heading title={pageTitle} sub={pageDes} />
                 <div className="works-page">
                     <div className='container'>
@@ -146,7 +146,7 @@ const Works = () => {
                         </div>
                     </div>
                 </div>
-            </Layout>
+            {/* </Layout> */}
         </>
     )
 }
