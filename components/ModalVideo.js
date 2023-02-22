@@ -75,19 +75,20 @@ const ModalVideo = () => {
                             status === false &&
                             <span onClick={() => ActionVideo()} className='icon-play'></span>
                         } */}
-
-                        <span onClick={() => CloseModalVideo()} className='icon-close'>
-                            <i className='text'>Close</i>
-                            <i className='icon'></i>
-                        </span>
-                        <video
-                            playsInline
-                            autoPlay muted controls
-                            onClick={() => ActionVideo()}
-                            width="100%"
-                            src={videoModal.videoUrl} type="video/mp4"
-                            className="modal-video video-js vjs-theme-city"
-                        />
+                        <div className='absolute w-full h-full left-0 top-0 bottom-0 right-0'>
+                            <span onClick={() => CloseModalVideo()} className='icon-close'>
+                                <i className='text'>Close</i>
+                                <i className='icon'></i>
+                            </span>
+                            <video
+                                playsInline
+                                autoPlay muted controls
+                                onClick={() => ActionVideo()}
+                                width="100%"
+                                src={videoModal.videoUrl} type="video/mp4"
+                                className="modal-video video-js vjs-theme-city"
+                            />
+                        </div>
                         {/* <VideoJS
                             className="video-js"
                             onReady={handlePlayerReady}

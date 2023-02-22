@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 const MetaTag = ({ title, metaTitle ,metaDescription, logo, imageSeo, siteName, ogType, ogImage, twImage }) => {
     const keywords = 'Ipossible, Event, Agency, Public Events'
-    const og_image = imageSeo ? imageSeo : 'https://develop.ipossible-revamp.pages.dev/images/seo.jpg'
+    const ogImageSeo = imageSeo ? imageSeo : 'https://develop.ipossible-revamp.pages.dev/images/seo.jpg'
     const logoHead = logo ? logo : '/favicon.jpg'
 
     const router = useRouter()
@@ -17,7 +17,7 @@ const MetaTag = ({ title, metaTitle ,metaDescription, logo, imageSeo, siteName, 
             <meta name="keywords" content={keywords} />
             <meta name="description" content={metaDescription} />
             <meta property="og:type" content="website" />
-            <meta property="og:image" content={og_image} />
+            <meta property="og:image" content={ogImageSeo} />
             <meta property="og:url" content={url} />
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />

@@ -74,9 +74,22 @@ h3 {
   @apply w-full h-full;
 }
 
+@mixin ImgRatio($number) {
+  @apply relative overflow-hidden;
+  &:before {
+      content: "";
+      @apply block;
+      padding-top: $number;
+  }
+  picture,
+  img {
+      @apply absolute w-full h-full left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%];
+  }
+}
+
 .modal-video {
   @apply overflow-hidden z-[-1] bg-ip-black fixed w-screen md:w-[61.5%] flex justify-center items-center top-[50%] md:top-auto left-[50%] translate-x-[-50%] translate-y-[-50%] md:translate-y-0 md:bottom-[8%] p-0;
-  @apply h-screen md:h-[75%];
+  @apply h-screen md:h-[70.2%];
   @media (max-width: 1023px) {
     @apply bg-[#fff];
   }
@@ -90,7 +103,12 @@ h3 {
     @apply hidden;
   }
   .wrap {
-    @apply w-full h-full md:mx-auto;
+    @apply w-full h-full md:mx-auto relative;
+    
+    // &::before{
+    //   content: '';
+    //   @apply absolute
+    // }
     @media (max-width: 1023px) {
       height: 50vh;
       position: relative;

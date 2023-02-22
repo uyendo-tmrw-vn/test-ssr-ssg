@@ -19,39 +19,22 @@ import Error from 'pages/_error';
 import Image from 'next/legacy/image'
 import Link from 'next/link';
 import MetaTag from '@components/MetaTag';
+import AppContext from '@components/AppContext';
 
 
 // install Swiper modules
 SwiperCore.use([Pagination, Mousewheel, Keyboard, Autoplay]);
 
 export default function Post({ post }) {
-  console.log({ post });
+  const { resConfigData } = useContext(AppContext)
   return (
     <>
-      {/* <Head>
-        <title>UyenDo | {post?.name}</title>
-        <meta name="robots" content="follow, index" />
-        <meta property="og:url" content={'url'} />
-        <meta name="keywords" content='test' />
-        <meta property="og:type" content="website" />
-
-        <meta name="description" content={post.meta_description ? post.meta_description : post?.description} />
-        <meta property="og:image" content={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id} />
-        <meta property="og:title" content={post.meta_title ? post.meta_title : post?.name} />
-        <meta property="og:description" content={post.meta_description ? post.meta_description : post?.description} />
-        <meta
-          name="robots"
-          content={
-            process.env.NODE_ENV === "production"
-              ? "index, follow"
-              : "noindex, nofollow"
-          } />
-      </Head> */}
       <MetaTag
         title={post?.name}
         metaTitle={post.meta_title ? post.meta_title : post?.name}
         metaDescription={post.meta_description ? post.meta_description : post?.description}
         imageSeo={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id}
+        siteName={resConfigData?.site_name}
       />
       <div className='product-detail-page'>
         <Heading title={post?.client?.name} sub={post?.name + ', ' + post?.location} />
