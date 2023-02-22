@@ -56,11 +56,11 @@ export default function App({ Component, pageProps, post }) {
               let item = listProjectClone[i]
               let x = item.main_photo?.type?.split('/')[0]
               if (x === 'video') {
-                setVideoModal({ 
-                  ...videoModal, 
+                setVideoModal({
+                  ...videoModal,
                   videoUrl: ImageUrl(item.main_photo.id),
                   showreelReviewUrl: ImageUrl(item.showreel_review)
-                 })
+                })
               }
             }
           }
@@ -139,9 +139,20 @@ export default function App({ Component, pageProps, post }) {
           <Header fb={resConfigData?.social_facebook} instagram={resConfigData?.social_instagram} />
           <ModalVideo />
           <Loading />
-          <motion.main className={`main ${router.route === '/' ? 'main-home' : 'main-children'}`} >
-            <Component {...pageProps} key={router.asPath} />
-          </motion.main>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+          >
+            <motion.main className={`main ${router.route === '/' ? 'main-home' : 'main-children'}`} >
+              <Component {...pageProps} key={router.asPath} />
+            </motion.main>
+          </motion.div>
         </AppContext.Provider>
       </AnimatePresence>
       {/* <Script type="text/javascript" id="hs-script-loader" async defer strategy="afterInteractive" src="/js/Plankton.js" /> */}
