@@ -34,7 +34,7 @@ const PlanktonView = ({ listProject, eleHand }) => {
             <div id={'gallery-title-' + key} key={key} data-title={key} className={`heading top-works-gallery-title title-id-${item.id}`}>
                 <h2 className="heading__big">{item.title}</h2>
                 <div className='heading__sub'>{item.location}</div>
-                <Link className='heading__img flex md:hidden' href={item.hide_all_work === true ? '/work' : '/work/' + item.id}>
+                <Link className='heading__img flex md:hidden' href={item.hide_all_work === true ? '/project' : '/project/' + item.slug}>
                     Find Out More <img src="/images/contact/contact-arrow.png" />
                 </Link>
             </div>
@@ -71,7 +71,7 @@ const PlanktonView = ({ listProject, eleHand }) => {
 
 
         } else {
-            router.push(hide_all_work === true ? '/work' : '/work/' + id)
+            router.push(hide_all_work === true ? '/project' : '/project/' + id)
         }
     }
 

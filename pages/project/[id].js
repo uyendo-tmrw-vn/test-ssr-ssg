@@ -18,6 +18,7 @@ import Error from 'pages/_error';
 
 import Image from 'next/legacy/image'
 import Link from 'next/link';
+import MetaTag from '@components/MetaTag';
 
 
 // install Swiper modules
@@ -27,7 +28,7 @@ export default function Post({ post }) {
   console.log({ post });
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>UyenDo | {post?.name}</title>
         <meta name="robots" content="follow, index" />
         <meta property="og:url" content={'url'} />
@@ -45,100 +46,99 @@ export default function Post({ post }) {
               ? "index, follow"
               : "noindex, nofollow"
           } />
-      </Head>
+      </Head> */}
+      <MetaTag
+        title={post?.name}
+        metaTitle={post.meta_title ? post.meta_title : post?.name}
+        metaDescription={post.meta_description ? post.meta_description : post?.description}
+        imageSeo={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id}
+      />
       <div className='product-detail-page'>
-          <Heading title={post?.client?.name} sub={post?.name + ', ' + post?.location} />
-          <div className='SwiperSliderNormal'>
-            {(() => {
-              if (post?.photos && post?.photos.length && post?.photos.length > 1) {
-                return (
-                  <Swiper className='SwiperSliderNormal__slider'
-                    centeredSlides={true}
-                    centerInsufficientSlides={true}
-                    slidesPerView={2.05}
-                    spaceBetween={3}
-                    loop={post?.photos.length > 1 ? true : false}
-                    speed={700}
-                    lazy={true}
-                    autoplay={false}
-                    autoplaytimeout={3}
-                    mousewheel={false}
-                    pagination={{
-                      clickable: true
-                    }}
-                    breakpoints={{
-                      320: { spaceBetween: 5 },
-                      480: { spaceBetween: 10 },
-                      540: { spaceBetween: 20 },
-                      640: { spaceBetween: 30 },
-                      768: { spaceBetween: 40 },
-                    }}
-                  >
-                    {post?.photos.length && post?.photos.map((e, i) =>
-                      <SwiperSlide key={i} className="">
-                        <LazyMotion features={domAnimation}>
-                          <img
-                            className='w-full'
-                            alt='Louis Vuitton'
-                            src={e.directus_files_id ? ImageUrl(e.directus_files_id + ImgQuality) : imgPlaceHolder}
-                          />
-                        </LazyMotion>
-                      </SwiperSlide>
-                    )}
-                  </Swiper>
-                )
-              } else if (post?.photos && post?.photos.length && post?.photos.length === 1) {
-                return (
-                  post?.photos && post?.photos.length && post?.photos.length === 1 &&
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
-                    className="text-center">
-                    <img
-                      className='w-full'
-                      alt='Louis Vuitton'
-                      src={post?.photos[0].directus_files_id ? ImageUrl(post?.photos[0].directus_files_id) : imgPlaceHolder}
-                    />
-                  </motion.div>
-                )
-              } else {
-                return ('')
-              }
-            })()}
-            <div className="container">
-              <div className='SwiperSliderNormal__text'>
-                {post?.description}
-              </div>
+        <Heading title={post?.client?.name} sub={post?.name + ', ' + post?.location} />
+        <div className='SwiperSliderNormal'>
+          {(() => {
+            if (post?.photos && post?.photos.length && post?.photos.length > 1) {
+              return (
+                <Swiper className='SwiperSliderNormal__slider'
+                  centeredSlides={true}
+                  centerInsufficientSlides={true}
+                  slidesPerView={2.05}
+                  spaceBetween={3}
+                  loop={post?.photos.length > 1 ? true : false}
+                  speed={700}
+                  lazy={true}
+                  autoplay={false}
+                  autoplaytimeout={3}
+                  mousewheel={false}
+                  pagination={{
+                    clickable: true
+                  }}
+                  breakpoints={{
+                    320: { spaceBetween: 5 },
+                    480: { spaceBetween: 10 },
+                    540: { spaceBetween: 20 },
+                    640: { spaceBetween: 30 },
+                    768: { spaceBetween: 40 },
+                  }}
+                >
+                  {post?.photos.length && post?.photos.map((e, i) =>
+                    <SwiperSlide key={i} className="">
+                      <LazyMotion features={domAnimation}>
+                        <img
+                          className='w-full'
+                          alt='Louis Vuitton'
+                          src={e.directus_files_id ? ImageUrl(e.directus_files_id + ImgQuality) : imgPlaceHolder}
+                        />
+                      </LazyMotion>
+                    </SwiperSlide>
+                  )}
+                </Swiper>
+              )
+            } else if (post?.photos && post?.photos.length && post?.photos.length === 1) {
+              return (
+                post?.photos && post?.photos.length && post?.photos.length === 1 &&
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+                  className="text-center">
+                  <img
+                    className='w-full'
+                    alt='Louis Vuitton'
+                    src={post?.photos[0].directus_files_id ? ImageUrl(post?.photos[0].directus_files_id) : imgPlaceHolder}
+                  />
+                </motion.div>
+              )
+            } else {
+              return ('')
+            }
+          })()}
+          <div className="container">
+            <div className='SwiperSliderNormal__text'>
+              {post?.description}
+            </div>
 
-              <div className="link-all-works">
-                <Link
-                  data-gtm-category="Project Detail"
-                  data-gtm-action="Clicked_ProjectDetailPage_Link"
-                  data-gtm-label="all works"
-                  className="btn-gtm "
-                  href="/work">
-                  <span className="text font-JostMedium">All Works</span>
-                  <Image
-                    loading="lazy"
-                    width={60}
-                    height={30}
-                    objectFit="contain"
-                    alt="Send"
-                    src='/images/contact/contact-arrow.png' />
-                </Link>
-              </div>
+            <div className="link-all-works">
+              <Link
+                data-gtm-category="Project Detail"
+                data-gtm-action="Clicked_ProjectDetailPage_Link"
+                data-gtm-label="all works"
+                className="btn-gtm "
+                href="/work">
+                <span className="text font-JostMedium">All Works</span>
+                <Image
+                  loading="lazy"
+                  width={60}
+                  height={30}
+                  objectFit="contain"
+                  alt="Send"
+                  src='/images/contact/contact-arrow.png' />
+              </Link>
             </div>
           </div>
         </div>
-      <div className='text-[1.5rem]'>
-        ID: {post?.id}
-        <br />
-        Name: {post?.name}
-        <br />
-        Slug: {post?.slug}
       </div>
     </>
 

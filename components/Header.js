@@ -117,12 +117,12 @@ const Header = ({ fb, instagram }) => {
                     <motion.div className='header__nav'>
                         <div className="flex header__nav-wrap justify-end">
                             <ul className='header__menu'>
-                                <li className={`header__menu-child ${router.pathname == "/works" ? "active" : ""}`}>
+                                <li className={`header__menu-child ${router.pathname == "/project" ? "active" : ""}`}>
                                     <span
                                         data-gtm-category="Navigation"
                                         data-gtm-action="Clicked_Navigation_Link"
                                         data-gtm-label="works"
-                                        className='btn-gtm link' onClick={(e) => onClickMenu(e, 'works')}>
+                                        className='btn-gtm link' onClick={(e) => onClickMenu(e, 'project')}>
                                         Works
                                     </span>
                                 </li>
