@@ -3,15 +3,9 @@ import { baseURL, ImageUrl, imgPlaceHolder, mappingMedia, RunCriptExternal, Vide
 import { useRouter } from 'next/router';
 import { HomeProject } from '@fakes/index';
 import AppContext from './AppContext';
-import Image from 'next/image';
 import Link from 'next/link';
 
-import videojs from "video.js";
-import VideoJS from './VideoJs';
-import Layout from './Layout';
 import { motion } from 'framer-motion';
-import useCheckExistItem from './useCheckExistItem';
-import { Mousewheel } from 'swiper';
 
 
 const PlanktonView = ({ listProject, eleHand }) => {
