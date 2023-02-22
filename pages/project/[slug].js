@@ -7,6 +7,7 @@ import SwiperCore, { Pagination } from "swiper/core";
 import { Keyboard, Mousewheel, Autoplay } from "swiper";
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import api from '@api/axiosServices';
 import Works from '../works/index';
@@ -57,49 +58,41 @@ SwiperCore.use([Pagination, Mousewheel, Keyboard, Autoplay]);
 //   }
 // }
 
-export const getServerSideProps = async (ctx) => {
-  const { params } = ctx;
-  const res = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.slug}`)
-  const postData = await res.json()
-  const post = await postData.data
 
-  return {
-    props: {
-      post,
-      title: post.data.name + ', ' + post.data.location,
-      meta_title: CheckExist(post.data.meta_title, post.data.name + ', ' + post.data.location),
-      meta_description: CheckExist(post.data.meta_description, post.data.description),
-      work_photo: 'https://cms.ipossible.com.sg/assets/' + post.data.work_photo.id,
-    }
-  }
-}
 
-const ProjectDetail = ({ post, title, meta_title, meta_description, work_photo }) => {
-  const router = useRouter()
-  const { id } = router.query
+const ProjectDetail = ({ post}) => {
+  // console.log({post});
 
   const [detail, setDetail] = useState()
   const { resConfigData } = useContext(AppContext)
 
   useEffect(() => {
-    if (post && post.data) {
-      setDetail(post.data)
+    if (post) {
+      setDetail(post)
     }
   }, [])
 
-  if (!router.isFallback && (post.data === undefined || post.data === null)) {
-    return <Error statusCode={404} />
-  }
-
   return (
     <>
-      <MetaTag
-        title={title}
-        metaTitle={meta_title}
-        metaDescription={meta_description}
-        siteName={resConfigData?.site_name}
-        imageSeo={work_photo}
-      />
+       <Head>
+        <title>UyenDo | {post?.name}</title>
+        <meta name="robots" content="follow, index" />
+        <meta property="og:url" content={'url'} />
+        <meta name="keywords" content='test' />
+        <meta property="og:type" content="website" />
+
+        <meta name="description" content={post.meta_description ? post.meta_description : post?.description} />
+        <meta property="og:image" content={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id} />
+        <meta property="og:title" content={post.meta_title ? post.meta_title : post?.name} />
+        <meta property="og:description" content={post.meta_description ? post.meta_description : post?.description} />
+        <meta
+          name="robots"
+          content={
+            process.env.NODE_ENV === "production"
+              ? "index, follow"
+              : "noindex, nofollow"
+          } />
+      </Head>
       {/* <Layout> */}
         <div className='product-detail-page'>
           <Heading title={detail?.client?.name} sub={detail?.name + ', ' + detail?.location} />
@@ -191,6 +184,25 @@ const ProjectDetail = ({ post, title, meta_title, meta_description, work_photo }
       {/* </Layout> */}
     </>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  const { params } = ctx;
+  const res = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.slug}`)
+  const post1 = await res.json()
+  const post = await post1.data
+
+    if (!post.length) { 
+    return {
+      notFound: true,
+    }
+   }
+
+  return {
+    props: {
+      post,
+    }
+  }
 }
 
 export default ProjectDetail

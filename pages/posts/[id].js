@@ -5,7 +5,7 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>UyenDo|{post?.name}</title>
+        <title>UyenDo | {post?.name}</title>
         <meta name="robots" content="follow, index" />
         <meta property="og:url" content={'url'} />
         <meta name="keywords" content='test' />
@@ -23,13 +23,13 @@ export default function Post({ post }) {
               : "noindex, nofollow"
           } />
       </Head>
-      <Layout>
+      <div className='text-[1.5rem]'>
         ID: {post?.id}
         <br />
         Name: {post?.name}
         <br />
         Slug: {post?.slug}
-      </Layout>
+      </div>
     </>
 
   );
