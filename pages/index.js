@@ -11,13 +11,18 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-     
+      <section className={utilStyles.headingMd}>
+        <p>[Your Self Introduction]</p>
+      </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.data.map(({ slug, date, title },index) => (
-            <li className={utilStyles.listItem} key={slug}>
-              <Link href={'posts/' + slug}>{index+1} - {slug}</Link> {title} <br />
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              <Link href={'posts/' + id}> {id}</Link>
+              <br />
               {date}
             </li>
           ))}
@@ -28,13 +33,28 @@ export default function Home({ allPostsData }) {
 }
 
 export async function getStaticProps() {
-  const url = 'https://cms.ipossible.com.sg/items/projects?filter[status][_eq]=published&fields=id,name,slug,description,location,hide_all_work,main_photo.id,photos.*,main_photo.type,client.id,client.name&sort=+sort';
-  const res = await fetch(url);
+  const url = 'https://jsonplaceholder.typicode.com/posts';
+  const res = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
   const allPostsData = await res.json();
-console.log({allPostsData});
+
   return {
     props: {
       allPostsData,
     },
   };
 }
+
+// export async function getStaticProps() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+//   const allPost = await response.json();
+
+//   return {
+//     props: {
+//       allPost
+//     }
+//   }
+// }
