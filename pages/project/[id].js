@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/scss/navigation';
@@ -7,13 +8,8 @@ import SwiperCore, { Pagination } from "swiper/core";
 import { Keyboard, Mousewheel, Autoplay } from "swiper";
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head';
-
-import api from '@api/axiosServices';
-import Works from '../works/index';
 
 import { baseURL, ImageUrl, handleError, imgPlaceHolder, ImgQuality, CheckExist } from '@components/Common';
-import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
 
 // import Layout from '@components/Layout';
@@ -22,59 +18,16 @@ import Error from 'pages/_error';
 
 import Image from 'next/legacy/image'
 import Link from 'next/link';
-import MetaTag from '@components/MetaTag';
-import AppContext from '@components/AppContext';
 
 
 // install Swiper modules
 SwiperCore.use([Pagination, Mousewheel, Keyboard, Autoplay]);
 
-// export async function getStaticPaths() {
-//   const data = await fetch('https://cms.ipossible.com.sg/items/projects?filter[status][_eq]=published&fields=id,name,slug,description,location,hide_all_work,main_photo.id,photos.*,main_photo.type,client.id,client.name&sort=+sort');
-
-//   const x = await data.json();
-//   const Result = await x.data.map(post => ({ params: { slug: post.slug.toString() } }));
-
-//   console.log({Result});
-
-//   return {
-//     paths: Result,
-//     fallback: false
-//   }
-// }
-// export async function getStaticProps({ params }) {
-//   const data = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.slug}`);
-
-//   const post = await data.json();
-
-//   return {
-//     props: {
-//       post,
-//       title: post.data.name + ', ' + post.data.location,
-//       meta_title: CheckExist(post.data.meta_title, post.data.name + ', ' + post.data.location),
-//       meta_description: CheckExist(post.data.meta_description, post.data.description),
-//       work_photo: 'https://cms.ipossible.com.sg/assets/' + post.data.work_photo.id,
-//     },
-//   }
-// }
-
-
-
-const ProjectDetail = ({ post}) => {
-  // console.log({post});
-
-  const [detail, setDetail] = useState()
-  const { resConfigData } = useContext(AppContext)
-
-  useEffect(() => {
-    if (post) {
-      setDetail(post)
-    }
-  }, [])
-
+export default function Post({ post }) {
+  console.log({ post });
   return (
     <>
-       <Head>
+      <Head>
         <title>UyenDo | {post?.name}</title>
         <meta name="robots" content="follow, index" />
         <meta property="og:url" content={'url'} />
@@ -93,19 +46,18 @@ const ProjectDetail = ({ post}) => {
               : "noindex, nofollow"
           } />
       </Head>
-      {/* <Layout> */}
-        {/* <div className='product-detail-page'>
-          <Heading title={detail?.client?.name} sub={detail?.name + ', ' + detail?.location} />
+      <div className='product-detail-page'>
+          <Heading title={post?.client?.name} sub={post?.name + ', ' + post?.location} />
           <div className='SwiperSliderNormal'>
             {(() => {
-              if (detail?.photos && detail?.photos.length && detail?.photos.length > 1) {
+              if (post?.photos && post?.photos.length && post?.photos.length > 1) {
                 return (
                   <Swiper className='SwiperSliderNormal__slider'
                     centeredSlides={true}
                     centerInsufficientSlides={true}
                     slidesPerView={2.05}
                     spaceBetween={3}
-                    loop={detail?.photos.length > 1 ? true : false}
+                    loop={post?.photos.length > 1 ? true : false}
                     speed={700}
                     lazy={true}
                     autoplay={false}
@@ -122,7 +74,7 @@ const ProjectDetail = ({ post}) => {
                       768: { spaceBetween: 40 },
                     }}
                   >
-                    {detail?.photos.length && detail?.photos.map((e, i) =>
+                    {post?.photos.length && post?.photos.map((e, i) =>
                       <SwiperSlide key={i} className="">
                         <LazyMotion features={domAnimation}>
                           <img
@@ -135,9 +87,9 @@ const ProjectDetail = ({ post}) => {
                     )}
                   </Swiper>
                 )
-              } else if (detail?.photos && detail?.photos.length && detail?.photos.length === 1) {
+              } else if (post?.photos && post?.photos.length && post?.photos.length === 1) {
                 return (
-                  detail?.photos && detail?.photos.length && detail?.photos.length === 1 &&
+                  post?.photos && post?.photos.length && post?.photos.length === 1 &&
                   <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -148,7 +100,7 @@ const ProjectDetail = ({ post}) => {
                     <img
                       className='w-full'
                       alt='Louis Vuitton'
-                      src={detail?.photos[0].directus_files_id ? ImageUrl(detail?.photos[0].directus_files_id) : imgPlaceHolder}
+                      src={post?.photos[0].directus_files_id ? ImageUrl(post?.photos[0].directus_files_id) : imgPlaceHolder}
                     />
                   </motion.div>
                 )
@@ -158,7 +110,7 @@ const ProjectDetail = ({ post}) => {
             })()}
             <div className="container">
               <div className='SwiperSliderNormal__text'>
-                {detail?.description}
+                {post?.description}
               </div>
 
               <div className="link-all-works">
@@ -180,30 +132,24 @@ const ProjectDetail = ({ post}) => {
               </div>
             </div>
           </div>
-        </div> */}
-        <div className='text-[1.5rem]'>
+        </div>
+      <div className='text-[1.5rem]'>
         ID: {post?.id}
         <br />
         Name: {post?.name}
         <br />
         Slug: {post?.slug}
       </div>
-      {/* </Layout> */}
     </>
-  )
+
+  );
 }
 
 export const getServerSideProps = async (ctx) => {
   const { params } = ctx;
-  const res = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.slug}`)
+  const res = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.id}`)
   const post1 = await res.json()
   const post = await post1.data
-
-    if (!post.length) { 
-    return {
-      notFound: true,
-    }
-   }
 
   return {
     props: {
@@ -212,4 +158,30 @@ export const getServerSideProps = async (ctx) => {
   }
 }
 
-export default ProjectDetail
+// export async function getStaticPaths() {
+//   const data = await fetch('https://cms.ipossible.com.sg/items/projects?filter[status][_eq]=published&fields=id,name,slug,description,location,hide_all_work,main_photo.id,photos.*,main_photo.type,client.id,client.name&sort=+sort');
+//   console.log(444, { data });
+//   const posts1 = await data.json();
+//   const posts = await posts1.data;
+
+//   //return array with {id:value}
+//   const Result = posts.map(post => ({ params: { id: post.slug.toString() } }))
+//   console.log({ Result });
+//   console.log(Result[0]);
+//   return {
+//     paths: Result,
+//     fallback: 'blocking'
+//   }
+// }
+// export async function getStaticProps({ params }) {
+//   const data = await fetch(`https://cms.ipossible.com.sg/ipossible-endpoint/projects/slug/${params.id}`);
+//   const post1 = await data.json();
+//   const post = await post1.data;
+
+//   return {
+//     props: {
+//       post,
+//     },
+//     revalidate: 10, // In seconds
+//   }
+// }
