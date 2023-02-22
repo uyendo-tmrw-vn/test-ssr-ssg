@@ -94,7 +94,7 @@ const ProjectDetail = ({ post}) => {
           } />
       </Head>
       {/* <Layout> */}
-        <div className='product-detail-page'>
+        {/* <div className='product-detail-page'>
           <Heading title={detail?.client?.name} sub={detail?.name + ', ' + detail?.location} />
           <div className='SwiperSliderNormal'>
             {(() => {
@@ -180,7 +180,14 @@ const ProjectDetail = ({ post}) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        <div className='text-[1.5rem]'>
+        ID: {post?.id}
+        <br />
+        Name: {post?.name}
+        <br />
+        Slug: {post?.slug}
+      </div>
       {/* </Layout> */}
     </>
   )
