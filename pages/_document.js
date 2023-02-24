@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-      <Link rel="manifest" href="/manifest.json">
+      <Link rel="manifest" href="/manifest.json"/>
       </Head>
       <body>
         <Main />
