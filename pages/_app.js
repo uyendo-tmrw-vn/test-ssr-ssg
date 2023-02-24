@@ -127,13 +127,6 @@ export default function App({ Component, pageProps, post }) {
   }
 
   return (
-    <>
-      // <MetaTag
-      //   logo={ImageUrl(resConfigData?.favicon_image)}
-      //   description={resConfigData?.meta_description}
-      //   siteName={resConfigData?.site_name}
-      //   imageSeo={ImageUrl(resConfigData?.seo_image)}
-      // />
       <AnimatePresence mode="wait" initial={false}>
         <AppContext.Provider value={{ setVideoModal, videoModal, setLoading, isLoading, listProject, resConfigData }} >
           <Header fb={resConfigData?.social_facebook} instagram={resConfigData?.social_instagram} />
@@ -155,8 +148,7 @@ export default function App({ Component, pageProps, post }) {
           </motion.div>
         </AppContext.Provider>
       </AnimatePresence>
-      {/* <Script type="text/javascript" id="hs-script-loader" async defer strategy="afterInteractive" src="/js/Plankton.js" /> */}
-    </>
+     
   )
 }
 
