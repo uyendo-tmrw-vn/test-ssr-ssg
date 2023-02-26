@@ -185,7 +185,7 @@ const Works = ({ stars }) => {
     )
 }
 
-Works.getInitialProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
     const res = await fetch('https://cms.ipossible.com.sg/items/config')
     const json = await res.json()
     const result = json.data
