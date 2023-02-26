@@ -15,7 +15,6 @@ import api from 'api/axiosServices';
 import { ApiUrl } from '@api/apiUrl';
 import { baseURL, ImageUrl, handleError, RunCriptExternal, mappingMedia, CallApiConfig } from '@components/Common';
 import { Loading } from '@components/Loading';
-import { DataCommonFromApi } from './../../IPossible_Source/components/Common';
 
 
 export default function App({ Component, pageProps, post }) {
