@@ -74,9 +74,9 @@ const Works = ({postsList}) => {
     return (
         <>
             <MetaTag
-                title={xxx.title}
+                title={pageTitle}
                 metaTitle={xxx.metatitle}
-                metaDescription={xxx.metaDes}
+                metaDescription={xxx.metaDes + ' works'}
                 siteName={resConfigData?.site_name}
             />
             {/* <Layout> */}
