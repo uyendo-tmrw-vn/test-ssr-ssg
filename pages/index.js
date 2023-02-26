@@ -8,9 +8,9 @@ import MetaTag from '@components/MetaTag';
 import { baseURL, CallApiConfig, ImageUrl } from '@components/Common';
 import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 
-const Home = ({ props, configResponse }) => {
+const Home = ({ props, configResponse, DataConfig }) => {
   const { listProject, resConfigData } = useContext(AppContext)
-
+  const [config, setConfig] = useState(DataConfig)
   const [eleLoading, setEleLoading] = useState(true)
   const [eleHand, setEleHand] = useState(false)
 
@@ -52,21 +52,34 @@ const Home = ({ props, configResponse }) => {
 
   return (
     <>
+      <MetaTag
+        siteName={config?.site_name}
+        metaTitle={config?.meta_title}
+        metaDescription={config?.meta_description}
+      />
       {/* <Layout> */}
-        <PlanktonView eleHand={eleHand} listProject={listProject} />
-        {
-          eleHand &&
-          <div className='eleHand '>
-            <span className='eleHandSpan'>
-              <img alt="swipe to start" src='/images/arrow-swipe.png' className='' />
-            </span>
-            {/* <img src='/images/hand.gif' className='w-full max-w-[10rem]' /> */}
-          </div>
-        }
-        <Loading />
+      <PlanktonView eleHand={eleHand} listProject={listProject} />
+      {
+        eleHand &&
+        <div className='eleHand '>
+          <span className='eleHandSpan'>
+            <img alt="swipe to start" src='/images/arrow-swipe.png' className='' />
+          </span>
+          {/* <img src='/images/hand.gif' className='w-full max-w-[10rem]' /> */}
+        </div>
+      }
+      <Loading />
       {/* </Layout> */}
     </>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  const res = await fetch('https://cms.ipossible.com.sg/items/config')
+  const json = await res.json()
+  const result = json.data
+
+  return { props: { DataConfig: result } }
 }
 
 export default Home

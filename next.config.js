@@ -10,11 +10,11 @@ module.exports = {
   },
   exportPathMap: function () {
     return {
-      '/': { page: `/` },
+      // '/': { page: `/` },
       // '/works': { page: `/works` },
-      '/contact': { page: `/contact` },
-      '/about': { page: `/about` },
-      '/thank-you': { page: `/thank-you` },
+      // '/contact': { page: `/contact` },
+      // '/about': { page: `/about` },
+      // '/thank-you': { page: `/thank-you` },
     }
   },
   images: {
