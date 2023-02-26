@@ -53,7 +53,7 @@ const Home = ({ props, configResponse, DataConfig }) => {
   return (
     <>
       <MetaTag
-        siteName={config?.site_name}
+        pageTitle={config?.site_name}
         metaTitle={config?.meta_title}
         metaDescription={config?.meta_description}
       />

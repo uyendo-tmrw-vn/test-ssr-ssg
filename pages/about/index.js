@@ -19,8 +19,6 @@ const About = ({DataConfig}) => {
     const { resConfigData } = useContext(AppContext)
     const [config, setConfig] = useState(DataConfig)
 
-    const pageTitle = "About Us"
-
     const CallApiAward = async () => {
         try {
             await api.get(baseURL + ApiUrl.awards)
@@ -63,8 +61,7 @@ const About = ({DataConfig}) => {
     return (
         <>
             <MetaTag
-                siteName={config?.site_name}
-                title={pageTitle}
+                pageTitle={config?.page_title}
                 metaTitle={config?.meta_title}
                 metaDescription={config?.meta_description}
             />
@@ -148,7 +145,7 @@ export const getServerSideProps = async (ctx) => {
     const res = await fetch('https://cms.ipossible.com.sg/items/config')
     const json = await res.json()
     const result = json.data
-
+    result.page_title = json.data.site_name + " | About Us"
     return { props: { DataConfig: result } }
 }
 

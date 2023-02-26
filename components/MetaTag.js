@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from "next/router";
 
-const MetaTag = ({ title, metaTitle, metaDescription, logo, imageSeo, siteName, ogType, ogImage, twImage }) => {
+const MetaTag = ({ pageTitle, metaTitle, metaDescription, logo, imageSeo, ogType, ogImage, twImage }) => {
     const keywords = 'Ipossible, Event, Agency, Public Events'
     const ogImageSeo = imageSeo ? imageSeo : 'https://develop.ipossible-revamp.pages.dev/images/seo.jpg'
     const logoHead = logo ? logo : '/favicon.jpg'
@@ -11,7 +11,7 @@ const MetaTag = ({ title, metaTitle, metaDescription, logo, imageSeo, siteName, 
 
     return (
         <Head>
-            <title>{(siteName ? siteName : 'iPossible Test') + (title ? (' | ' + title) : '')}</title>
+            <title>{pageTitle}</title>
             <link rel="icon" href={logoHead} />
             <meta name="robots" content="follow, index" />
             <meta name="keywords" content={keywords} />

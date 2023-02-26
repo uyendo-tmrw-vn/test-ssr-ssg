@@ -30,11 +30,10 @@ export default function Post({ post }) {
   return (
     <>
       <MetaTag
-        title={post?.name}
+        pageTitle={resConfigData?.site_name + ' | ' + post?.name}
         metaTitle={post.meta_title ? post.meta_title : post?.name}
         metaDescription={post.meta_description ? post.meta_description : post?.description}
         imageSeo={'https://cms.ipossible.com.sg/assets/' + post?.work_photo?.id}
-        siteName={resConfigData?.site_name}
       />
       <div className='product-detail-page'>
         <Heading title={post?.client?.name} sub={post?.name + ', ' + post?.location} />
