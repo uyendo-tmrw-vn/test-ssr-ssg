@@ -11,7 +11,7 @@ const MetaTag = ({ title, metaTitle ,metaDescription, logo, imageSeo, siteName, 
 
     return (
         <Head>
-            <title>{siteName + ( title ? ' | ' + title : '')}</title>
+            <title>{siteName?siteName:'iPossible Test' + ( title ? ' | ' + title : '')}</title>
             <link rel="icon" href={logoHead} />
             <meta name="robots" content="follow, index" />
             <meta name="keywords" content={keywords} />
