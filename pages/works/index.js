@@ -62,7 +62,8 @@ const Works = () => {
         <>
             <MetaTag
                 title={pageTitle}
-                description={pageDes}
+                metaTitle={metapageTitleTitle}
+                metaDescription={pageDes}
                 siteName={resConfigData?.site_name}
             />
             {/* <Layout> */}

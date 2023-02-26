@@ -14,9 +14,15 @@ import ImagePlaceholder from "@components/ImagePlaceholder";
 import MetaTag from "@components/MetaTag";
 import AppContext from "@components/AppContext";
 
+export async function getStaticProps(context) {
+   // const { resConfigData } = useContext(AppContext)
+   console.log('context1111',context)
+  // const json = await res.json()
+  return { props: {stars: 'xxx'} }
+}
 
-const About = ({ configResponse }) => {
-
+const About = ({ configResponse,stars }) => {
+    console.log(999,stars)
     const [resData, setResData] = useState(JsonAward)
     const { resConfigData } = useContext(AppContext)
 

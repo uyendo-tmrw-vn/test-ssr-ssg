@@ -10,6 +10,7 @@
     "lint": "next lint",
     "clean-next": "rmdir /s /q .next",
     "clean-nm": "rmdir /s /q node_modules",
+     "clean-build": "rmdir /s /q build",
     "clean-out": "rmdir /s /q out"
   },
   "dependencies": {
