@@ -66,10 +66,10 @@ const Works = ({ DataConfig }) => {
         <>
             <MetaTag
                 pageTitle={config?.page_title}
-                metaTitle={config?.meta_title}
+                metaTitle={config?.page_title}
                 metaDescription={config?.meta_description}
             />
-            <Heading title={config?.meta_title} sub={pageDes} />
+            <Heading title={'All works'} sub={pageDes} />
             <div className="works-page">
                 <div className='container'>
                     <div className='works-page__list' ref={refWorks}>
