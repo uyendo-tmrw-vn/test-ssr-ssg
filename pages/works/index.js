@@ -1,7 +1,7 @@
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { useEffect, useState, useRef, useContext } from 'react';
 
-import { baseURL, ImageUrl, handleError, imgPlaceHolder, mappingMediaWorks, ImgQuality } from '@components/Common';
+import { baseURL, ImageUrl, handleError, imgPlaceHolder, mappingMediaWorks, ImgQuality, DataCommonFromApi } from '@components/Common';
 import { JsonWorks } from '@fakes/index';
 import { ApiUrl, ApiUrlProjectDetail } from '@api/apiUrl';
 
@@ -10,12 +10,24 @@ import api from 'api/axiosServices';
 import Heading from '@components/Heading';
 import Link from 'next/link';
 import ImagePlaceholder from '@components/ImagePlaceholder';
-import useLazyLoadImage from '@components/useLazyLoadImage';
 import MetaTag from '@components/MetaTag';
 import AppContext from '@components/AppContext';
+import useLazyLoadImage from '@components/useLazyLoadImage';
+import useUser from './../../components/HookCallConfig';
+
+// export async function getStaticProps() {
+//     const postsList = await DataCommonFromApi()
+//     console.log(33,postsList);
+//     return {
+//       props: {
+//         postsList,
+//       }, // will be passed to the page component as props
+//     }
+//   }
 
 //bg-[green]
-const Works = () => {
+const Works = ({postsList}) => {
+
     const { resConfigData } = useContext(AppContext)
     const [resData, setResData] = useState()
     const [listMedia, setListMedia] = useState()
@@ -25,6 +37,7 @@ const Works = () => {
 
     const refWorks = useRef(null);
     useLazyLoadImage(refWorks);
+    const xxx = useUser();
 
     const CallApi = async () => {
         try {
@@ -32,7 +45,6 @@ const Works = () => {
                 .then(data => {
                     if (data.status === 200) {
                         setResData(data.data.data)
-                        console.log(2222,data.data.data);
                     }
                 })
         } catch (error) {
@@ -42,6 +54,7 @@ const Works = () => {
 
     useEffect(() => {
         CallApi()
+        console.log({xxx});
     }, [])
 
     useEffect(() => {
@@ -61,9 +74,9 @@ const Works = () => {
     return (
         <>
             <MetaTag
-                title={pageTitle}
-                metaTitle={pageTitle}
-                metaDescription={pageDes}
+                title={xxx.title}
+                metaTitle={xxx.metatitle}
+                metaDescription={xxx.metaDes}
                 siteName={resConfigData?.site_name}
             />
             {/* <Layout> */}

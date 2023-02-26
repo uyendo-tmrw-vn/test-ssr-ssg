@@ -10,9 +10,9 @@ import api from 'api/axiosServices';
 import Heading from '@components/Heading';
 import Link from 'next/link';
 import ImagePlaceholder from '@components/ImagePlaceholder';
-import useLazyLoadImage from '@components/useLazyLoadImage';
 import MetaTag from '@components/MetaTag';
 import AppContext from '@components/AppContext';
+import useLazyLoadImage from '@components/useLazyLoadImage';
 
 //bg-[green]
 const Works = () => {
@@ -32,7 +32,6 @@ const Works = () => {
                 .then(data => {
                     if (data.status === 200) {
                         setResData(data.data.data)
-                        console.log(2222,data.data.data);
                     }
                 })
         } catch (error) {

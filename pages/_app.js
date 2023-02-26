@@ -15,6 +15,7 @@ import api from 'api/axiosServices';
 import { ApiUrl } from '@api/apiUrl';
 import { baseURL, ImageUrl, handleError, RunCriptExternal, mappingMedia, CallApiConfig } from '@components/Common';
 import { Loading } from '@components/Loading';
+import { DataCommonFromApi } from './../../IPossible_Source/components/Common';
 
 
 export default function App({ Component, pageProps, post }) {
@@ -92,6 +93,10 @@ export default function App({ Component, pageProps, post }) {
 
 
   useEffect(() => {
+
+    // const x = DataCommonFromApi()
+    // console.log({ x });
+
     CallApi()
     setLoading(false)
     // TagManager.initialize({ gtmId: 'GTM-KCCMMWK' })
@@ -127,28 +132,28 @@ export default function App({ Component, pageProps, post }) {
   }
 
   return (
-      <AnimatePresence mode="wait" initial={false}>
-        <AppContext.Provider value={{ setVideoModal, videoModal, setLoading, isLoading, listProject, resConfigData }} >
-          <Header fb={resConfigData?.social_facebook} instagram={resConfigData?.social_instagram} />
-          <ModalVideo />
-          <Loading />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-            }}
-          >
-            <motion.main className={`main ${router.route === '/' ? 'main-home' : 'main-children'}`} >
-              <Component {...pageProps} key={router.asPath} />
-            </motion.main>
-          </motion.div>
-        </AppContext.Provider>
-      </AnimatePresence>
-     
+    <AnimatePresence mode="wait" initial={false}>
+      <AppContext.Provider value={{ setVideoModal, videoModal, setLoading, isLoading, listProject, resConfigData }} >
+        <Header fb={resConfigData?.social_facebook} instagram={resConfigData?.social_instagram} />
+        <ModalVideo />
+        <Loading />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
+          <motion.main className={`main ${router.route === '/' ? 'main-home' : 'main-children'}`} >
+            <Component {...pageProps} key={router.asPath} />
+          </motion.main>
+        </motion.div>
+      </AppContext.Provider>
+    </AnimatePresence>
+
   )
 }
 

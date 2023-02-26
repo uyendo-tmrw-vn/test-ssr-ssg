@@ -32,7 +32,6 @@ const Works = () => {
                 .then(data => {
                     if (data.status === 200) {
                         setResData(data.data.data)
-                        console.log(2222,data.data.data);
                     }
                 })
         } catch (error) {
