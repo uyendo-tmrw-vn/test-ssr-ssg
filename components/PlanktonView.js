@@ -75,13 +75,8 @@ const PlanktonView = ({ listProject, eleHand }) => {
         }
     }
 
-    useEffect(() => {
-        console.log({ activeItem });
-    }, [activeItem])
-
     const TopWorksGallery = (data) => {
         if (data && data.length) {
-            console.log({data});
             return (
                 data && data.length && data.map((item, index) => {
                     return (

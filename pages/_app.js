@@ -17,7 +17,28 @@ import { baseURL, ImageUrl, handleError, RunCriptExternal, mappingMedia, CallApi
 import { Loading } from '@components/Loading';
 
 
-export default function App({ Component, pageProps, post }) {
+// export async function getServerSideProps(context) {
+
+//   // Fetch data
+//   const res = await fetch(`https://cms.ipossible.com.sg/items/config`)
+//   const data = await res.json();
+
+//   console.log(888, res);
+
+//   const config = {
+//     title: data.title || 'xxx',
+//     description: data.description || 'xxx',
+//     content: data.content || 'xxx'
+//   }
+
+//   return {
+//     props: { config }
+//   }
+// }
+
+export default function App({ Component, pageProps, post, config }) {
+
+  console.log(999, config);
 
   const { height, width } = useWindowDimensions();
   const router = useRouter();
@@ -39,6 +60,7 @@ export default function App({ Component, pageProps, post }) {
           if (data.status === 200) {
             setResConfigData(data.data.data)
           }
+
         })
     } catch (error) {
       handleError(error)
@@ -155,4 +177,6 @@ export default function App({ Component, pageProps, post }) {
 
   )
 }
+
+
 
