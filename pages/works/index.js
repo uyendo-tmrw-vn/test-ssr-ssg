@@ -62,7 +62,7 @@ const Works = () => {
         <>
             <MetaTag
                 title={pageTitle}
-                metaTitle={metapageTitleTitle}
+                metaTitle={pageTitle}
                 metaDescription={pageDes}
                 siteName={resConfigData?.site_name}
             />
